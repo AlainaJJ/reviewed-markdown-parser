@@ -55,4 +55,28 @@ public class MarkdownParseTest {
 
         assertArrayEquals(expected, links.toArray());
     }
+
+    @Test 
+    public void reviewedSnipTest1() throws Exception {
+        ArrayList<String> links = MarkdownParse.getLinks(Files.readString(Path.of("snippet-test1.md")));
+        String[] expected = {"google.com"};
+
+        assertArrayEquals(expected, links.toArray());
+    }
+
+    @Test 
+    public void reviewedSnipTest2() throws Exception {
+        ArrayList<String> links = MarkdownParse.getLinks(Files.readString(Path.of("snippet-test2.md")));
+        String[] expected = {"a.com", "a.com(())", "example.com"};
+
+        assertArrayEquals(expected, links.toArray());
+    }
+
+    @Test 
+    public void reviewedSnipTest3() throws Exception {
+        ArrayList<String> links = MarkdownParse.getLinks(Files.readString(Path.of("snippet-test3.md")));
+        String[] expected = {"https://sites.google.com/eng.ucsd.edu/cse-15l-spring-2022/schedule"};
+
+        assertArrayEquals(expected, links.toArray());
+    }
 }
